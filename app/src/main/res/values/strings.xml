@@ -7,5 +7,6 @@
     <string name="item_by_day">See food by date</string>
     <string name="item_by_meal">See food by meal</string>
     <string name="by_day_button">See food</string>
+    <string name="by_meal_title">Select meal</string>
 
 </resources>
