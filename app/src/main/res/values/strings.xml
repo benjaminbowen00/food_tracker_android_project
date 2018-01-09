@@ -1,8 +1,11 @@
 <resources>
-    <string name="app_name">MealTrackerProject</string>
+    <string name="app_name">Food Tracker</string>
 
     <string name="food_text">Food</string>
     <string name="comment_text">Comment</string>
     <string name="save_button">Save</string>
+    <string name="item_by_day">See food by date</string>
+    <string name="item_by_meal">See food by meal</string>
+    <string name="by_day_button">See food</string>
 
 </resources>

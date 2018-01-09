@@ -20,6 +20,9 @@ public interface FoodDao {
     @Query("SELECT * FROM foods ORDER BY date(date) DESC")
     List<Food> getAllFoods();
 
+    @Query("SELECT * FROM foods WHERE date =:dateString ")
+    List<Food> findByDay(String dateString);
+
 
 
 }
