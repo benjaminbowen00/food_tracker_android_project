@@ -2,6 +2,7 @@ package com.example.benjaminbowen.mealtrackerproject;
 
 import android.app.DatePickerDialog;
 import android.arch.persistence.room.Room;
+import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -9,6 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -21,6 +23,8 @@ public class ByDayActivity extends AppCompatActivity {
     AppDatabase db;
     String dateForDB;
     DatePickerDialog datePickerDialog;
+    TextView noFoodText;
+    ListView listView;
 
 
 
@@ -29,7 +33,10 @@ public class ByDayActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_by_day);
 
+        listView = findViewById(R.id.list_by_day);
         dayDateButton = findViewById(R.id.by_day_date_button);
+        showByDayButton = findViewById(R.id.by_day_button);
+        noFoodText = findViewById(R.id.no_food_text);
 
         db = Room.databaseBuilder(getApplicationContext(), AppDatabase.class, "foods")
                 .fallbackToDestructiveMigration()
@@ -46,6 +53,7 @@ public class ByDayActivity extends AppCompatActivity {
         String day = Helper.addLeadingZero(Integer.toString(current_day));
         dateForDB = Integer.toString(current_year)+"-"+month+"-"+day;
         dayDateButton.setText(button_date);
+        final Context that = this;
 
         datePickerDialog = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
             public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
@@ -56,19 +64,30 @@ public class ByDayActivity extends AppCompatActivity {
             }
         },newCalendar.get(Calendar.YEAR), newCalendar.get(Calendar.MONTH), newCalendar.get(Calendar.DAY_OF_MONTH));
 
-//        showByDayButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                List<Food> foodList = db.foodDao().findByDay(dateForDB);
-//                ArrayList<Food> foods = (ArrayList)foodList;
-//
-//                FoodsDayAdapter foodsDayAdapter = new FoodsDayAdapter(ByDayActivity.this, foods);
-//
-//                ListView listView = findViewById(R.id.list_by_day);
-//                listView.setAdapter(foodsDayAdapter);
-//
-//            }
-//        });
+        showByDayButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                List<Food> foodList = db.foodDao().findByDay(dateForDB);
+                ArrayList<Food> foods = (ArrayList)foodList;
+
+                if(foods.size() == 0){
+                    listView.setVisibility(View.INVISIBLE);
+                    noFoodText.setVisibility((View.VISIBLE));
+                    String noFoodTextString = "No food recorded";
+                    noFoodText.setText(noFoodTextString);
+
+                }
+
+                else{
+                noFoodText.setVisibility(View.GONE);
+                listView.setVisibility(View.VISIBLE);
+                FoodsDayAdapter foodsDayAdapter = new FoodsDayAdapter(that, foods);
+
+
+                listView.setAdapter(foodsDayAdapter);}
+
+            }
+        });
     }
 
     public void showDatePickerDialog(View v) {
