@@ -4,6 +4,8 @@ import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.PrimaryKey;
 
+import java.util.Date;
+
 /**
  * Created by benjaminbowen on 08/01/2018.
  */
@@ -22,8 +24,17 @@ public class Food {
     @ColumnInfo(name = "comment")
     private String comment;
 
+    private Date properDate;
+
     public Food(String date, String meal, String food, String comment) {
         this.date = date;
+        this.meal = meal;
+        this.food = food;
+        this.comment = comment;
+    }
+
+    public Food(Date date, String meal, String food, String comment) {
+        this.properDate = date;
         this.meal = meal;
         this.food = food;
         this.comment = comment;

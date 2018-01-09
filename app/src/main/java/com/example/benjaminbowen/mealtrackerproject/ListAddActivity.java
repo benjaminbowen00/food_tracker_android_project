@@ -1,14 +1,20 @@
 package com.example.benjaminbowen.mealtrackerproject;
 
+import android.arch.persistence.room.Room;
 import android.content.Intent;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ListView;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class ListAddActivity extends AppCompatActivity {
 
     FloatingActionButton addFab;
+    AppDatabase db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -17,9 +23,10 @@ public class ListAddActivity extends AppCompatActivity {
 
         addFab = findViewById(R.id.add_fab);
 
-
-
-
+        db = Room.databaseBuilder(getApplicationContext(), AppDatabase.class,"foods")
+                .fallbackToDestructiveMigration()
+                .allowMainThreadQueries()
+                .build();
 
         addFab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -27,6 +34,18 @@ public class ListAddActivity extends AppCompatActivity {
                 startActivity(new Intent(ListAddActivity.this, CreateFoodActivity.class));
             }
         });
+
+        List<Food> foodList = db.foodDao().getAllFoods();
+
+        ArrayList<Food> foods = (ArrayList)foodList;
+
+        FoodsAdapter foodsAdapter = new FoodsAdapter(this, foods);
+
+        ListView listView = findViewById(R.id.main_list);
+        listView.setAdapter(foodsAdapter);
+
+
+
     }
 
 
