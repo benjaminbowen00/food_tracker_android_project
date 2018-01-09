@@ -24,7 +24,7 @@ public class Food {
     @ColumnInfo(name = "comment")
     private String comment;
 
-    private Date properDate;
+
 
     public Food(String date, String meal, String food, String comment) {
         this.date = date;
@@ -33,12 +33,7 @@ public class Food {
         this.comment = comment;
     }
 
-    public Food(Date date, String meal, String food, String comment) {
-        this.properDate = date;
-        this.meal = meal;
-        this.food = food;
-        this.comment = comment;
-    }
+
 
     public int getId() {
         return id;

@@ -55,7 +55,9 @@ public class CreateFoodActivity extends AppCompatActivity {
         Integer current_month = currentDate.get(Calendar.MONTH)+1;
         Integer current_day = currentDate.get(Calendar.DATE);
         String button_date = "Date: "+ Integer.toString(current_day)+'/'+Integer.toString(current_month)+'/'+Integer.toString(current_year);
-        dateForDB = Integer.toString(current_year)+"-"+Integer.toString(current_month)+"-"+Integer.toString(current_day);
+        String month = Helper.addLeadingZero(Integer.toString(current_month));
+        String day = Helper.addLeadingZero(Integer.toString(current_day));
+        dateForDB = Integer.toString(current_year)+"-"+month+"-"+day;
         dateButton.setText(button_date);
 
         ArrayAdapter<Meals> mealAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, Meals.values());
@@ -66,7 +68,7 @@ public class CreateFoodActivity extends AppCompatActivity {
             public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
                 String display_date = "Date: "+dayOfMonth + "/" + (monthOfYear + 1) + "/" + year;
                 dateButton.setText(display_date);
-                dateForDB = year+"-"+(monthOfYear+1)+"-"+dayOfMonth;
+                dateForDB = Integer.toString(year)+"-"+Helper.addLeadingZero(Integer.toString(monthOfYear+1))+"-"+Helper.addLeadingZero(Integer.toString(dayOfMonth));
 
             }
         },newCalendar.get(Calendar.YEAR), newCalendar.get(Calendar.MONTH), newCalendar.get(Calendar.DAY_OF_MONTH));

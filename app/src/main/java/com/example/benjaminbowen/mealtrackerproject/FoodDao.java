@@ -17,7 +17,7 @@ public interface FoodDao {
     @Insert
     void insertAll(Food... foods);
 
-    @Query("SELECT * FROM foods ORDER BY date DESC")
+    @Query("SELECT * FROM foods ORDER BY date(date) DESC")
     List<Food> getAllFoods();
 
 
