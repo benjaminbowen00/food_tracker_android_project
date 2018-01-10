@@ -89,6 +89,11 @@ public class SearchActivity extends AppCompatActivity {
             startActivity(intent);
         }
 
+        if(item.getItemId() == R.id.item_add_food){
+            Intent intent = new Intent(this, CreateFoodActivity.class);
+            startActivity(intent);
+        }
+
         return super.onOptionsItemSelected(item);
     }
 

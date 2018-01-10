@@ -12,5 +12,7 @@
     <string name="main_page">Main page</string>
     <string name="delete_button">Delete this record</string>
     <string name="no_food_toast">You must enter a food</string>
+    <string name="welcome_screen">Food Tracker</string>
+    <string name="item_add_food">Record a food</string>
 
 </resources>

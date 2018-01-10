@@ -29,7 +29,8 @@
             android:name=".SingleFoodActivity"
             android:parentActivityName=".ListAddActivity" />
         <activity android:name=".SearchActivity"
-            android:windowSoftInputMode="adjustPan"></activity>
+            android:windowSoftInputMode="adjustPan"
+            android:parentActivityName=".ListAddActivity"></activity>
     </application>
 
 </manifest>

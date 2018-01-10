@@ -13,4 +13,7 @@
     <item
         android:id="@+id/item_by_search"
         android:title="@string/item_by_search" />
+    <item
+        android:id="@+id/item_add_food"
+        android:title="@string/item_add_food" />
 </menu>
