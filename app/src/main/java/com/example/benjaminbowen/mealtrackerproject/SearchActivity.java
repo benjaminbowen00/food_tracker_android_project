@@ -1,53 +1,64 @@
 package com.example.benjaminbowen.mealtrackerproject;
 
 import android.arch.persistence.room.Room;
+import android.content.Context;
 import android.content.Intent;
-import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class ListAddActivity extends AppCompatActivity {
+public class SearchActivity extends AppCompatActivity {
 
-    FloatingActionButton addFab;
     AppDatabase db;
+    EditText searchText;
+    Button searchButton;
+    ListView searchListView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_list_add);
+        setContentView(R.layout.activity_search);
 
-        addFab = findViewById(R.id.add_fab);
+    }
+
+    public void getSearchResults(View v){
+
+        searchText = findViewById(R.id.search_page_text);
+        searchButton = findViewById(R.id.search_page_button);
+        searchListView = findViewById(R.id.search_list);
 
         db = Room.databaseBuilder(getApplicationContext(), AppDatabase.class,"foods")
                 .fallbackToDestructiveMigration()
                 .allowMainThreadQueries()
                 .build();
 
-        addFab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(ListAddActivity.this, CreateFoodActivity.class));
-            }
-        });
+        String searchWord = searchText.getText().toString();
+        String searchDBWord = '%'+searchWord+'%';
 
-        List<Food> foodList = db.foodDao().getAllFoods();
+        List<Food> foodList = db.foodDao().findBySearch(searchDBWord);
 
         ArrayList<Food> foods = (ArrayList)foodList;
 
         FoodsAdapter foodsAdapter = new FoodsAdapter(this, foods);
 
-        ListView listView = findViewById(R.id.main_list);
-        listView.setAdapter(foodsAdapter);
 
+        searchListView.setAdapter(foodsAdapter);
+
+        InputMethodManager inputManager = (InputMethodManager)
+                getSystemService(Context.INPUT_METHOD_SERVICE);
+
+        inputManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(),
+                InputMethodManager.HIDE_NOT_ALWAYS);
 
 
     }
@@ -56,12 +67,17 @@ public class ListAddActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu){
         MenuInflater menuInflater = getMenuInflater();
         menuInflater.inflate(R.menu.main_menu, menu);
-        menu.removeItem(R.id.item_main_page);
+        menu.removeItem(R.id.item_by_search);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item){
+
+        if(item.getItemId() == R.id.item_main_page){
+            Intent intent = new Intent(this, ListAddActivity.class);
+            startActivity(intent);
+        }
 
         if(item.getItemId() == R.id.item_by_day){
             Intent intent = new Intent (this, ByDayActivity.class);
@@ -69,25 +85,10 @@ public class ListAddActivity extends AppCompatActivity {
         }
 
         if(item.getItemId() == R.id.item_by_meal){
-            Intent intent = new Intent(this, ByMealActivity.class);
-            startActivity(intent);
-        }
-
-        if(item.getItemId() == R.id.item_by_search){
             Intent intent = new Intent(this, SearchActivity.class);
             startActivity(intent);
         }
 
         return super.onOptionsItemSelected(item);
     }
-
-    public void getFood(View listItem){
-        int foodID = (int) listItem.getTag();
-
-        Intent intent = new Intent(this, SingleFoodActivity.class);
-        intent.putExtra("foodID", foodID);
-        startActivity(intent);
-    }
-
-
 }

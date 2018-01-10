@@ -16,10 +16,19 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".CreateFoodActivity" />
-        <activity android:name=".ByDayActivity" />
-        <activity android:name=".ByMealActivity" />
-        <activity android:name=".SingleFoodActivity"></activity>
+        <activity
+            android:name=".CreateFoodActivity"
+            android:parentActivityName=".ListAddActivity" />
+        <activity
+            android:name=".ByDayActivity"
+            android:parentActivityName=".ListAddActivity" />
+        <activity
+            android:name=".ByMealActivity"
+            android:parentActivityName=".ListAddActivity" />
+        <activity
+            android:name=".SingleFoodActivity"
+            android:parentActivityName=".ListAddActivity" />
+        <activity android:name=".SearchActivity"></activity>
     </application>
 
 </manifest>

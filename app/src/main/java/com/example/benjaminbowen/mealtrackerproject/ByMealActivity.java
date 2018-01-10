@@ -88,13 +88,18 @@ public class ByMealActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item){
 
+        if(item.getItemId() == R.id.item_main_page){
+            Intent intent = new Intent(this, ListAddActivity.class);
+            startActivity(intent);
+        }
+
         if(item.getItemId() == R.id.item_by_day){
             Intent intent = new Intent (this, ByDayActivity.class);
             startActivity(intent);
         }
 
-        if(item.getItemId() == R.id.item_main_page){
-            Intent intent = new Intent(this, ListAddActivity.class);
+        if(item.getItemId() == R.id.item_by_search){
+            Intent intent = new Intent(this, SearchActivity.class);
             startActivity(intent);
         }
 

@@ -1,5 +1,6 @@
 package com.example.benjaminbowen.mealtrackerproject;
 
+import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.arch.persistence.room.Room;
 import android.arch.persistence.room.RoomDatabase;
@@ -8,6 +9,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.ArrayAdapter;
@@ -15,6 +17,7 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -60,6 +63,7 @@ public class CreateFoodActivity extends AppCompatActivity {
         dateForDB = Integer.toString(current_year)+"-"+month+"-"+day;
         dateButton.setText(button_date);
 
+
         ArrayAdapter<Meals> mealAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, Meals.values());
         mealAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         mealSpinner.setAdapter(mealAdapter);
@@ -78,13 +82,22 @@ public class CreateFoodActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
+                foodText = findViewById(R.id.food_text);
+
+                if(foodText.getText().toString().isEmpty()){
+                    Toast toast = Toast.makeText(CreateFoodActivity.this, R.string.no_food_toast, Toast.LENGTH_SHORT);
+                    toast.show();
+                    foodText.requestFocus();
+                }
+                
+                else{
                 Food food = new Food(dateForDB,
                         mealSpinner.getSelectedItem().toString(),
                         foodText.getText().toString(),
                         commentText.getText().toString());
                 db.foodDao().insertAll(food);
 
-                startActivity(new Intent(CreateFoodActivity.this, ListAddActivity.class));
+                startActivity(new Intent(CreateFoodActivity.this, ListAddActivity.class));}
             }
         });
 

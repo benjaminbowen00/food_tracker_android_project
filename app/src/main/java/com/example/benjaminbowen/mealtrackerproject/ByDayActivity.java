@@ -119,6 +119,11 @@ public class ByDayActivity extends AppCompatActivity {
             startActivity(intent);
         }
 
+        if(item.getItemId() == R.id.item_by_search){
+            Intent intent = new Intent(this, SearchActivity.class);
+            startActivity(intent);
+        }
+
         return super.onOptionsItemSelected(item);
     }
 }

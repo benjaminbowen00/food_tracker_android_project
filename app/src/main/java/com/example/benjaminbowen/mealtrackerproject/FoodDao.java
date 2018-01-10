@@ -32,6 +32,9 @@ public interface FoodDao {
     @Query("DELETE FROM foods WHERE id =:foodID")
     int deleteByID(int foodID);
 
+    @Query("SELECT * FROM foods WHERE food LIKE :word ORDER BY date DESC")
+    List<Food> findBySearch(String word);
+
 
 
 }

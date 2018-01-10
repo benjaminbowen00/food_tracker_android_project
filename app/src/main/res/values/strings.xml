@@ -6,9 +6,11 @@
     <string name="save_button">Save</string>
     <string name="item_by_day">See food by date</string>
     <string name="item_by_meal">See food by meal</string>
+    <string name="item_by_search">Search</string>
     <string name="by_day_button">See food</string>
     <string name="by_meal_title">Select meal</string>
     <string name="main_page">Main page</string>
     <string name="delete_button">Delete this record</string>
+    <string name="no_food_toast">You must enter a food</string>
 
 </resources>
