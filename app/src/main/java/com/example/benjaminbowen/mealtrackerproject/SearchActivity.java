@@ -13,6 +13,7 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,6 +24,7 @@ public class SearchActivity extends AppCompatActivity {
     EditText searchText;
     Button searchButton;
     ListView searchListView;
+    TextView noResultsText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +38,7 @@ public class SearchActivity extends AppCompatActivity {
         searchText = findViewById(R.id.search_page_text);
         searchButton = findViewById(R.id.search_page_button);
         searchListView = findViewById(R.id.search_list);
+        noResultsText = findViewById(R.id.no_food_search);
 
         db = Room.databaseBuilder(getApplicationContext(), AppDatabase.class,"foods")
                 .fallbackToDestructiveMigration()
@@ -49,17 +52,29 @@ public class SearchActivity extends AppCompatActivity {
 
         ArrayList<Food> foods = (ArrayList)foodList;
 
-        FoodsAdapter foodsAdapter = new FoodsAdapter(this, foods);
+        if(foods.size()==0){
+            noResultsText.setVisibility(View.VISIBLE);
+            searchListView.setVisibility((View.INVISIBLE));
+            String outputText = "There are no foods recorded as "+ "'"+searchWord+"'";
+            noResultsText.setText(outputText);
+
+        }
+        else {
+            noResultsText.setVisibility(View.INVISIBLE);
+            searchListView.setVisibility((View.VISIBLE));
 
 
-        searchListView.setAdapter(foodsAdapter);
+            FoodsAdapter foodsAdapter = new FoodsAdapter(this, foods);
 
-        InputMethodManager inputManager = (InputMethodManager)
-                getSystemService(Context.INPUT_METHOD_SERVICE);
 
-        inputManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(),
-                InputMethodManager.HIDE_NOT_ALWAYS);
+            searchListView.setAdapter(foodsAdapter);
 
+            InputMethodManager inputManager = (InputMethodManager)
+                    getSystemService(Context.INPUT_METHOD_SERVICE);
+
+            inputManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(),
+                    InputMethodManager.HIDE_NOT_ALWAYS);
+        }
 
     }
 

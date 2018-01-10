@@ -6,6 +6,9 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -73,6 +76,40 @@ public class SingleFoodActivity extends AppCompatActivity {
 
     AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setMessage("Are you sure?").setNegativeButton("No", dialogClickListener).setPositiveButton("Yes", dialogClickListener).show();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu){
+        MenuInflater menuInflater = getMenuInflater();
+        menuInflater.inflate(R.menu.main_menu, menu);
+        menu.removeItem(R.id.item_by_search);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item){
+
+        if(item.getItemId() == R.id.item_main_page){
+            Intent intent = new Intent (this, ListAddActivity.class);
+            startActivity(intent);
+        }
+
+        if(item.getItemId() == R.id.item_by_day){
+            Intent intent = new Intent(this, ByDayActivity.class);
+            startActivity(intent);
+        }
+
+        if(item.getItemId() == R.id.item_by_meal){
+            Intent intent = new Intent(this, ByMealActivity.class);
+            startActivity(intent);
+        }
+
+        if(item.getItemId() == R.id.item_add_food){
+            Intent intent = new Intent(this, CreateFoodActivity.class);
+            startActivity(intent);
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 
 }

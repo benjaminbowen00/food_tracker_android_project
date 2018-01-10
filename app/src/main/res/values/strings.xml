@@ -14,5 +14,6 @@
     <string name="no_food_toast">You must enter a food</string>
     <string name="welcome_screen">Food Tracker</string>
     <string name="item_add_food">Record a food</string>
+    <string name="search_hint">Search for a food</string>
 
 </resources>
