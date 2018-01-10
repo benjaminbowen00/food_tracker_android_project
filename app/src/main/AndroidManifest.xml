@@ -18,7 +18,8 @@
         </activity>
         <activity android:name=".CreateFoodActivity" />
         <activity android:name=".ByDayActivity" />
-        <activity android:name=".ByMealActivity"></activity>
+        <activity android:name=".ByMealActivity" />
+        <activity android:name=".SingleFoodActivity"></activity>
     </application>
 
 </manifest>

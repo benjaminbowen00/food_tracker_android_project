@@ -26,6 +26,9 @@ public interface FoodDao {
     @Query("SELECT * FROM foods WHERE meal =:mealString ORDER BY date DESC")
     List<Food> findByMeal(String mealString);
 
+    @Query("SELECT * FROM foods WHERE id =:foodID")
+    Food findByID(int foodID);
+
 
 
 }

@@ -61,19 +61,26 @@ public class ListAddActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item){
+
         if(item.getItemId() == R.id.item_by_day){
             Intent intent = new Intent (this, ByDayActivity.class);
             startActivity(intent);
         }
-
 
         if(item.getItemId() == R.id.item_by_meal){
             Intent intent = new Intent(this, ByMealActivity.class);
             startActivity(intent);
         }
 
-
         return super.onOptionsItemSelected(item);
+    }
+
+    public void getFood(View listItem){
+        int foodID = (int) listItem.getTag();
+
+        Intent intent = new Intent(this, SingleFoodActivity.class);
+        intent.putExtra("foodID", foodID);
+        startActivity(intent);
     }
 
 

@@ -38,6 +38,8 @@ public class FoodsAdapter extends ArrayAdapter<Food>{
         TextView mealListItem = listItemView.findViewById(R.id.food_item_meal);
         mealListItem.setText(currentFood.getMeal());
 
+        listItemView.setTag(currentFood.getId());
+
 
         return listItemView;
 

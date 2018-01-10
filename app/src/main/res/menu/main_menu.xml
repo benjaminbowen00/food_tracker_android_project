@@ -2,6 +2,9 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
+        android:id="@+id/item_main_page"
+        android:title="@string/main_page" />
+    <item
         android:id="@+id/item_by_day"
         android:title="@string/item_by_day" />
     <item
