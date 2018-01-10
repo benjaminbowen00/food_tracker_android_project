@@ -4,6 +4,7 @@ import android.arch.persistence.room.Room;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -37,7 +38,7 @@ public class SingleFoodActivity extends AppCompatActivity {
 
 
         Intent intent = getIntent();
-        int foodID = intent.getIntExtra("foodID", 0);
+        final int foodID = intent.getIntExtra("foodID", 0);
 
         Food singleFood = db.foodDao().findByID(foodID);
 
@@ -46,6 +47,14 @@ public class SingleFoodActivity extends AppCompatActivity {
         foodSingleText.setText(singleFood.getFood());
         commentSingleText.setText(singleFood.getComment());
 
+
+        deleteButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                db.foodDao().deleteByID(foodID);
+                startActivity(new Intent(SingleFoodActivity.this, ListAddActivity.class));
+            }
+        });
 
 
 

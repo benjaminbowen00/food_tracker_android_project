@@ -29,6 +29,9 @@ public interface FoodDao {
     @Query("SELECT * FROM foods WHERE id =:foodID")
     Food findByID(int foodID);
 
+    @Query("DELETE FROM foods WHERE id =:foodID")
+    int deleteByID(int foodID);
+
 
 
 }
