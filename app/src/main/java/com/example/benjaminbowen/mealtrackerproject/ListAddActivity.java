@@ -56,6 +56,7 @@ public class ListAddActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu){
         MenuInflater menuInflater = getMenuInflater();
         menuInflater.inflate(R.menu.main_menu, menu);
+        menu.removeItem(R.id.item_main_page);
         return true;
     }
 

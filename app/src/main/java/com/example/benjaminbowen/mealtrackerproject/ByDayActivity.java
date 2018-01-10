@@ -3,9 +3,13 @@ package com.example.benjaminbowen.mealtrackerproject;
 import android.app.DatePickerDialog;
 import android.arch.persistence.room.Room;
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -92,5 +96,29 @@ public class ByDayActivity extends AppCompatActivity {
 
     public void showDatePickerDialog(View v) {
         datePickerDialog.show();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu){
+        MenuInflater menuInflater = getMenuInflater();
+        menuInflater.inflate(R.menu.main_menu, menu);
+        menu.removeItem(R.id.item_by_day);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item){
+
+        if(item.getItemId() == R.id.item_main_page){
+            Intent intent = new Intent (this, ListAddActivity.class);
+            startActivity(intent);
+        }
+
+        if(item.getItemId() == R.id.item_by_meal){
+            Intent intent = new Intent(this, ByMealActivity.class);
+            startActivity(intent);
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 }
