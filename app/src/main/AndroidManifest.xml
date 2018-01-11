@@ -37,11 +37,15 @@
             android:parentActivityName=".ListAddActivity"
             android:windowSoftInputMode="adjustPan" />
 
+        <activity android:name=".ClearAllActivity"
+            android:parentActivityName=".ListAddActivity"
+            android:label="@string/clear_all_button"></activity>
+
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
 
-        <activity android:name=".ClearAllActivity"></activity>
+
     </application>
 
 </manifest>
