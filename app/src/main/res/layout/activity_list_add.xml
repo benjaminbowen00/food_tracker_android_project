@@ -57,7 +57,6 @@
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
         android:fontFamily="@font/aclonica"
         android:text="@string/welcome_screen"
         android:textAlignment="center"

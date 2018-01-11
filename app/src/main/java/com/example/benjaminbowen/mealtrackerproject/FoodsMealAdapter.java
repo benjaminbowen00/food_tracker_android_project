@@ -32,7 +32,7 @@ public class FoodsMealAdapter extends ArrayAdapter<Food> {
         foodListItem.setText(currentFood.getFood());
 
         TextView dateListItem = listItemView.findViewById(R.id.date_by_meal_text);
-        dateListItem.setText(currentFood.getDate());
+        dateListItem.setText(Helper.convertDateFormatOlder(currentFood.getDate()));
 
 
         return listItemView;
