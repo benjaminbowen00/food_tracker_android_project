@@ -52,4 +52,12 @@ public class Helper {
         return todayDate;
     }
 
+    public static Date getDateWeekAgo(){
+        Calendar today = Calendar.getInstance();
+        today.add(Calendar.DATE, -6);
+        Date weekAgoDate = today.getTime();
+        return weekAgoDate;
+
+    }
+
 }

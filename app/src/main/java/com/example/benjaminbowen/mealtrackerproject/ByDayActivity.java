@@ -131,6 +131,11 @@ public class ByDayActivity extends AppCompatActivity {
             startActivity(intent);
         }
 
+        if(item.getItemId() == R.id.item_week_summary){
+            Intent intent = new Intent(this, WeeklySummaryActivity.class);
+            startActivity(intent);
+        }
+
         return super.onOptionsItemSelected(item);
     }
 }

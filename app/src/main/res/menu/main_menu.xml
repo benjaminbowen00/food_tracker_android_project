@@ -17,6 +17,9 @@
         android:id="@+id/item_delete_all"
         android:title="@string/clear_all_button" />
     <item
+        android:id="@+id/item_week_summary"
+        android:title="@string/item_week_summary" />
+    <item
         android:id="@+id/item_add_food"
         android:title="@string/item_add_food" />
 </menu>

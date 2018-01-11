@@ -38,6 +38,9 @@ public interface FoodDao {
     @Query("DELETE FROM foods")
     void deleteAll();
 
+    @Query("SELECT count(*) FROM foods WHERE meal = :meal AND (date BETWEEN :date1 AND :date2)")
+    int getCountByMealAndDate(String meal, String date1, String date2);
+
 
 
 }

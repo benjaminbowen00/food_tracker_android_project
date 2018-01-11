@@ -113,6 +113,10 @@ public class SearchActivity extends AppCompatActivity {
             Intent intent = new Intent(this, CreateFoodActivity.class);
             startActivity(intent);
         }
+        if(item.getItemId() == R.id.item_week_summary){
+            Intent intent = new Intent(this, WeeklySummaryActivity.class);
+            startActivity(intent);
+        }
 
         return super.onOptionsItemSelected(item);
     }

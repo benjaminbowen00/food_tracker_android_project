@@ -36,16 +36,16 @@
             android:label="@string/item_by_search"
             android:parentActivityName=".ListAddActivity"
             android:windowSoftInputMode="adjustPan" />
-
-        <activity android:name=".ClearAllActivity"
-            android:parentActivityName=".ListAddActivity"
-            android:label="@string/clear_all_button"></activity>
+        <activity
+            android:name=".ClearAllActivity"
+            android:label="@string/clear_all_button"
+            android:parentActivityName=".ListAddActivity" />
 
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
 
-
+        <activity android:name=".WeeklySummaryActivity"></activity>
     </application>
 
 </manifest>

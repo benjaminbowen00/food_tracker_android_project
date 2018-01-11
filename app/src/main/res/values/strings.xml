@@ -16,6 +16,7 @@
     <string name="item_add_food">Record a food</string>
     <string name="search_hint">Search for a food</string>
     <string name="clear_all_button">Clear all saved data</string>
+    <string name="item_week_summary">Week summary</string>
 
 
 </resources>
