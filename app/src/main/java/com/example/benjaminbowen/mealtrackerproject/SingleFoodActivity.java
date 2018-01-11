@@ -82,7 +82,6 @@ public class SingleFoodActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu){
         MenuInflater menuInflater = getMenuInflater();
         menuInflater.inflate(R.menu.main_menu, menu);
-        menu.removeItem(R.id.item_by_search);
         return true;
     }
 
@@ -101,6 +100,11 @@ public class SingleFoodActivity extends AppCompatActivity {
 
         if(item.getItemId() == R.id.item_by_meal){
             Intent intent = new Intent(this, ByMealActivity.class);
+            startActivity(intent);
+        }
+
+        if(item.getItemId() == R.id.item_by_search){
+            Intent intent = new Intent(this, SearchActivity.class);
             startActivity(intent);
         }
 
