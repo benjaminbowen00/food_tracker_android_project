@@ -18,27 +18,30 @@
         </activity>
         <activity
             android:name=".CreateFoodActivity"
-            android:parentActivityName=".ListAddActivity"
-            android:label="@string/item_add_food"/>
+            android:label="@string/item_add_food"
+            android:parentActivityName=".ListAddActivity" />
         <activity
             android:name=".ByDayActivity"
-            android:parentActivityName=".ListAddActivity"
-            android:label="@string/item_by_day"/>
+            android:label="@string/item_by_day"
+            android:parentActivityName=".ListAddActivity" />
         <activity
             android:name=".ByMealActivity"
-            android:parentActivityName=".ListAddActivity"
-            android:label="@string/item_by_meal"/>
+            android:label="@string/item_by_meal"
+            android:parentActivityName=".ListAddActivity" />
         <activity
             android:name=".SingleFoodActivity"
             android:parentActivityName=".ListAddActivity" />
-        <activity android:name=".SearchActivity"
-            android:windowSoftInputMode="adjustPan"
+        <activity
+            android:name=".SearchActivity"
+            android:label="@string/item_by_search"
             android:parentActivityName=".ListAddActivity"
-            android:label="@string/item_by_search"></activity>
+            android:windowSoftInputMode="adjustPan" />
 
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
+
+        <activity android:name=".ClearAllActivity"></activity>
     </application>
 
 </manifest>

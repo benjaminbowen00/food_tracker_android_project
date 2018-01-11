@@ -83,6 +83,11 @@ public class ListAddActivity extends AppCompatActivity {
             startActivity(intent);
         }
 
+        if(item.getItemId() == R.id.item_delete_all){
+            Intent intent = new Intent(this, ClearAllActivity.class);
+            startActivity(intent);
+        }
+
         return super.onOptionsItemSelected(item);
     }
 
