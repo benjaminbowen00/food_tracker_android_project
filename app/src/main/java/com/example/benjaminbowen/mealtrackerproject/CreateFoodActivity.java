@@ -53,14 +53,11 @@ public class CreateFoodActivity extends AppCompatActivity {
                 .allowMainThreadQueries()
                 .build();
 
-        Calendar currentDate = Calendar.getInstance();
-        Integer current_year = currentDate.get(Calendar.YEAR);
-        Integer current_month = currentDate.get(Calendar.MONTH)+1;
-        Integer current_day = currentDate.get(Calendar.DATE);
-        String button_date = "Date: "+ Integer.toString(current_day)+'/'+Integer.toString(current_month)+'/'+Integer.toString(current_year);
-        String month = Helper.addLeadingZero(Integer.toString(current_month));
-        String day = Helper.addLeadingZero(Integer.toString(current_day));
-        dateForDB = Integer.toString(current_year)+"-"+month+"-"+day;
+
+
+        Date todayDate = Helper.getCurrentDate();
+        String button_date = Helper.convertDateToString(todayDate);
+        dateForDB = Helper.convertDatetoDBString(todayDate);
         dateButton.setText(button_date);
 
 

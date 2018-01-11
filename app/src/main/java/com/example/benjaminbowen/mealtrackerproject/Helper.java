@@ -4,6 +4,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
@@ -33,6 +34,22 @@ public class Helper {
             return dMYFormat.format(date);        }
         catch (ParseException e){e.printStackTrace();}
         return null;
+    }
+
+    public static String convertDateToString(Date date){
+        SimpleDateFormat dMYFormat = new SimpleDateFormat("dd/MM/yyyy");
+        return dMYFormat.format(date);
+    }
+
+    public static String convertDatetoDBString(Date date){
+        SimpleDateFormat yMDFormat = new SimpleDateFormat("yyyy-MM-dd");
+        return yMDFormat.format(date);
+    }
+
+    public static Date getCurrentDate() {
+        Calendar today = Calendar.getInstance();
+        Date todayDate = today.getTime();
+        return todayDate;
     }
 
 }

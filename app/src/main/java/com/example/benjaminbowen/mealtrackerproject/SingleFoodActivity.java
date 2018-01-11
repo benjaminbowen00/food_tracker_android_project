@@ -49,7 +49,7 @@ public class SingleFoodActivity extends AppCompatActivity {
 
         Food singleFood = db.foodDao().findByID(foodID);
 
-        dateSingleText.setText(singleFood.getDate());
+        dateSingleText.setText(Helper.convertDateFormatOlder(singleFood.getDate()));
         mealSingleText.setText(singleFood.getMeal());
         foodSingleText.setText(singleFood.getFood());
         commentSingleText.setText(singleFood.getComment());
