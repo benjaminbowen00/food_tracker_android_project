@@ -52,7 +52,7 @@ public class ClearAllActivity extends AppCompatActivity {
             }
         };
 
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        AlertDialog.Builder builder = new AlertDialog.Builder(this, R.style.MyDialogTheme);
         builder.setMessage("Once deleted data can not be recovered. Are you sure you want to continue?").setNegativeButton("No", dialogClickListener).setPositiveButton("Yes", dialogClickListener).show();
 
 

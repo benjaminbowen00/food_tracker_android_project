@@ -3,4 +3,6 @@
     <color name="colorPrimary">#9040ff</color>
     <color name="colorPrimaryDark">#9040ff</color>
     <color name="colorAccent">#9040ff</color>
+    <color name="alert_red">#FF0000</color>
+
 </resources>
