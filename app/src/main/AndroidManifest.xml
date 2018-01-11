@@ -45,7 +45,9 @@
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
 
-        <activity android:name=".WeeklySummaryActivity"></activity>
+        <activity android:name=".WeeklySummaryActivity"
+            android:label="@string/item_week_summary"
+            android:parentActivityName=".ListAddActivity"></activity>
     </application>
 
 </manifest>
