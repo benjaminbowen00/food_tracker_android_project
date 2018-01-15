@@ -31,6 +31,7 @@ public class WeeklySummaryActivity extends AppCompatActivity {
                 .allowMainThreadQueries()
                 .build();
 
+
         Date weekAgoDate = Helper.getDateWeekAgo();
         Date todayDate = Helper.getCurrentDate();
         String weekAgoDateString = Helper.convertDatetoDBString(weekAgoDate);
@@ -48,8 +49,8 @@ public class WeeklySummaryActivity extends AppCompatActivity {
         for(Meals meal : Meals.values()){
             summary += "You ate "+db.foodDao().getCountByMealAndDate(meal.toString(), weekAgoDateString,
                     todayDateString)+" "+meal.toString().toLowerCase()+"s \n";
-
         }
+
 
         weekSummaryText.setText(summary);
 
